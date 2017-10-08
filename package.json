@@ -1,0 +1,26 @@
+{
+  "name": "@clubajax/react-web-component",
+  "version": "0.9.0",
+  "description": "Wrapper for Web Components so that React will play nice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clubajax/react-web-component.git"
+  },
+  "keywords": [
+    "react",
+    "web",
+    "component",
+    "custom-element",
+    "polymer"
+  ],
+  "author": "clubajax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clubajax/react-web-component/issues"
+  },
+  "homepage": "https://github.com/clubajax/react-web-component#readme"
+}
