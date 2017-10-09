@@ -9,7 +9,7 @@ export default class WebComponent extends Component {
 	shouldComponentUpdate (props) {
 		const changed = {};
 		Object.keys(props).forEach((key) => {
-			if (!isEqual(props[key], this.props[key])) {
+			if (typeof props[key] !== 'function' && !isEqual(props[key], this.props[key])) {
 				changed[key] = props[key];
 			}
 		});
@@ -32,7 +32,7 @@ export default class WebComponent extends Component {
 		}
 	}
 
-	listen (node) {
+	connect (node) {
 		if (!node) {
 			return;
 		}
@@ -48,6 +48,8 @@ export default class WebComponent extends Component {
 				this.listeners.push(() => {
 					this.node.removeEventListener(eventName, this.props[key]);
 				});
+			} else if (typeof this.props[key] === 'object') {
+				this.node[key] = this.props[key];
 			}
 		});
 	}
@@ -64,11 +66,11 @@ export default class WebComponent extends Component {
 		const props = this.props;
 		const attributes = {
 			ref: (node) => {
-				this.listen(node);
+				this.connect(node);
 			}
 		};
 		Object.keys(props).forEach((key) => {
-			if (typeof props[key] !== 'function') {
+			if (typeof props[key] !== 'function' && typeof props[key] !== 'object') {
 				attributes[key] = props[key];
 			}
 		});
