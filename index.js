@@ -67,7 +67,8 @@ export default class WebComponent extends Component {
 		const attributes = {
 			ref: (node) => {
 				this.connect(node);
-			}
+			},
+			class: props.className
 		};
 		Object.keys(props).forEach((key) => {
 			if (typeof props[key] !== 'function' && typeof props[key] !== 'object') {
