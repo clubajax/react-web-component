@@ -1,6 +1,6 @@
 {
   "name": "@clubajax/react-web-component",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Wrapper for Web Components so that React will play nice",
   "main": "index.js",
   "scripts": {
