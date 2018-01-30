@@ -62,6 +62,10 @@ best practices and syncs them, so that `element.foo = true` works the same way a
 Obviously, you can't set an object via attributes (it coerces into a string). In these cases, they are always passed in 
 as properties.
 
+## onUnmount
+
+If desired, pass in an `onUnmount` callback which will be fired on `componentWillUnmount`, passing the custom element.
+
 ## License
 
 As always, [free as in beer](./LICENSE).

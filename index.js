@@ -22,6 +22,9 @@ export default class WebComponent extends Component {
 
 	componentWillUnmount () {
 		this.removeListeners();
+		if (this.props.onUnmount) {
+			this.props.onUnmount(this.node);
+		}
 	}
 
 	removeListeners () {
