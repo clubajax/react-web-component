@@ -58,8 +58,16 @@ export default class WebComponent extends Component {
 	}
 
 	update (props) {
+		// update objects before properties
+		// ergo, we want to set options before value
 		Object.keys(props).forEach((key) => {
-			if (typeof props[key] !== 'function') {
+			if (typeof props[key] === 'object') {
+				this.node[key] = props[key];
+			}
+		});
+
+		Object.keys(props).forEach((key) => {
+			if (typeof props[key] !== 'function' && typeof props[key] !== 'object') {
 				this.node[key] = props[key];
 			}
 		});
