@@ -51,7 +51,7 @@ export default class WebComponent extends Component {
 				this.listeners.push(() => {
 					this.node.removeEventListener(eventName, this.props[key]);
 				});
-			} else if (typeof this.props[key] === 'object') {
+			} else if (typeof this.props[key] === 'object' && key !== 'children') {
 				this.node[key] = this.props[key];
 			}
 		});
@@ -82,12 +82,12 @@ export default class WebComponent extends Component {
 			class: props.className
 		};
 		Object.keys(props).forEach((key) => {
-			if (typeof props[key] !== 'function' && typeof props[key] !== 'object') {
+			if (typeof props[key] !== 'function' && typeof props[key] !== 'object' && key !== 'children') {
 				attributes[key] = props[key];
 			}
 		});
 
-		return React.createElement(this.props.component, attributes);
+		return React.createElement(this.props.component, attributes, props.children);
 	}
 }
 

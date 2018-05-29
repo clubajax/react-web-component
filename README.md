@@ -2,7 +2,6 @@
 
 Wrapper for Web Components so that React will play nice
 
-
 ## Description
 
 The wrapper makes for a smooth transition between React and Web Components by allowing to pass objects as attributes,
@@ -35,7 +34,9 @@ export default function Chart ({ title, total, data }) {
 			total={total}
 			data={data}
 			onCustomEvent={onCustomEvent}
-		/>
+		>
+			<div>child</div>
+		</WebComponent>
 	);
 }
 ```
@@ -56,7 +57,7 @@ WebComponent has a `value` getter, which can come in handy if you need to uses `
 
 ## Properties/Attributes
 
-In spite of their similarity, properties and attributes ae not the same. It is important that your web component usues 
+In spite of their similarity, properties and attributes ae not the same. It is important that your web component uses 
 best practices and syncs them, so that `element.foo = true` works the same way as `element.setAttribute('foo', true);`.
 
 Obviously, you can't set an object via attributes (it coerces into a string). In these cases, they are always passed in 
