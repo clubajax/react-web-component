@@ -97,6 +97,6 @@ function toEventName (word) {
 	return word.replace(onReg, '').toLowerCase();
 }
 
-function isEqual (a, b) {
-	return JSON.stringify(a) === JSON.stringify(b);
+function isEqual(a, b) {
+    return a === b;
 }
