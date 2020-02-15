@@ -46,10 +46,7 @@ export default function Chart ({ title, total, data }) {
 A WebComponent can be updated like any other React Component. Under the hood, `shouldComponentUpdate` always returns 
 false (The JSX is never re-rendered), and instead, the web component's properties are passed in.
 
-Note that `shouldComponentUpdate` uses a naive comparison (`JSON.stringify`) to determine whether to update the property.
-This may cause problems if you are passing in extra data that is not valid, such as the window object, or DOM nodes.
-
-The comparison may be updated in the future.
+If `deep` is passed as a prop, `shouldComponentUpdate` will do a deep comparison. It defaulst to shallow.
 
 ## Value
 
