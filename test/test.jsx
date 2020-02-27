@@ -20,9 +20,18 @@ render(
 	(
 		<div>
 			<WebComponent
-				component="test-component"
-				data={data}
-				border
+                component="test-component"
+                data={data}
+                border
+                // onClick={() => {
+                //     console.log('click')
+                // }}
+                onLabelClick={() => {
+                    console.log('label click');
+                }}
+                onSectionClick={() => {
+                    console.log('section click');
+                }}
 			>
 				<div>haz</div>
 				<div>children</div>
