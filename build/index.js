@@ -15,7 +15,9 @@ export default class WebComponent extends Component {
 		});
 
 		if (Object.keys(changed).length) {
-			this.update(changed);
+            setTimeout(() => {
+                this.update(changed);
+            }, 1);
 		}
 		return false;
 	}
@@ -47,7 +49,6 @@ export default class WebComponent extends Component {
 		Object.keys(this.props).forEach((key) => {
 			if (typeof this.props[key] === 'function') {
                 const eventName = toEventName(key);
-                console.log('eventName', eventName)
 				this.node.addEventListener(eventName, this.props[key]);
 				this.listeners.push(() => {
 					this.node.removeEventListener(eventName, this.props[key]);

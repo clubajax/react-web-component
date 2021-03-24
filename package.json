@@ -1,12 +1,12 @@
 {
   "name": "@clubajax/react-web-component",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Wrapper for Web Components so that React will play nice",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./config/dev.config.js --mode development",
     "test": "mocha -w test/helpers/browser.js test/*.spec.js",
-    "deploy": "node ./scripts/deploy.js"
+    "build": "node ./scripts/deploy.js"
   },
   "repository": {
     "type": "git",
