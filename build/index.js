@@ -46,13 +46,20 @@ export default class WebComponent extends Component {
 
 		this.listeners = [];
 
-		Object.keys(this.props).forEach((key) => {
-			if (typeof this.props[key] === 'function') {
+        Object.keys(this.props).forEach((key) => {
+            if (this.props[key] === null) {
+                return;
+            }
+            if (typeof this.props[key] === 'function') {
                 const eventName = toEventName(key);
-				this.node.addEventListener(eventName, this.props[key]);
-				this.listeners.push(() => {
-					this.node.removeEventListener(eventName, this.props[key]);
-				});
+                if (eventName) {
+                    this.node.addEventListener(eventName, this.props[key]);
+                    this.listeners.push(() => {
+                        this.node.removeEventListener(eventName, this.props[key]);
+                    });
+                } else {
+                    this.node[key] = this.props[key];
+                }
 			} else if (typeof this.props[key] === 'object' && key !== 'children') {
 				this.node[key] = this.props[key];
 			}
@@ -95,7 +102,10 @@ export default class WebComponent extends Component {
 
 
 function toEventName (word) {
-	const onReg = /^on/;
+    const onReg = /^on/;
+    if (!onReg.test(word)) {
+        return null;
+    }
     return word.replace(onReg, '').replace( /([A-Z])/g, ' $1').trim().split(' ').join('-').toLowerCase();
 }
 
